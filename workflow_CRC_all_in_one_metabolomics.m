@@ -1,17 +1,12 @@
 %% load metabolomics data (UK cohort)
 
-load('CRC_metabolomics_data_proc.mat', 'C', 'M_data', 'M_labs', 'i_Tumour')
-
-%% scripts to include
-
-% JMP_modularity
-% bhfdr
-% LocalMaxMin
-% imax
-% imin
-% JMP_scale
-% recursivePCA
-% XTickRotateJMP
+C=readmatrix('CRC_metabolomics_data.xlsx','Sheet','covariates','Range','B2:S161');
+C_pid=readcell('CRC_metabolomics_data.xlsx','Sheet','covariates','Range','A2:A161');
+Clabs=readcell('CRC_metabolomics_data.xlsx','Sheet','covariates','Range','B1:S1');
+i_Tumour=readmatrix('CRC_metabolomics_data.xlsx','Sheet','covariates','Range','T2:T161')==1;
+M_data=readmatrix('CRC_metabolomics_data.xlsx','Sheet','metabolomics_data','Range','B2:BD161');
+M_pid=readcell('CRC_metabolomics_data.xlsx','Sheet','metabolomics_data','Range','A2:A161');
+M_labs=readcell('CRC_metabolomics_data.xlsx','Sheet','metabolomics_labels','Range','A2:A56');
 
 %% settings for analysis
 alp=0.05; % alpha level
@@ -133,7 +128,7 @@ xlabel('Modularity')
 legend({'Actual clustering','Random clustering','Optimal number of clusters'},'Location','SouthWest')
 set(gcf,'Position',[1372,1055,1300,1000])
 
-%% Comparing microbiome in T vs TPN
+%% Comparing metabolomics in T vs TPN
 
 Mc_data=M_data;
 Mcc_data=zeros(size(Mc_data,1),numel(unique(ci)));
@@ -199,7 +194,13 @@ title('Signed rank test for each cluster (T vs TPN)')
 
 %% load metabolomics data (Czech cohort)
 
-load('KRCA_metabolomics_data_proc.mat', 'C', 'M_data', 'M_labs', 'i_Tumour')
+C=readmatrix('KRCA_metabolomics_data.xlsx','Sheet','covariates','Range','C2:J53'); %
+C_pid=readcell('KRCA_metabolomics_data.xlsx','Sheet','covariates','Range','A2:A53');
+Clabs=readcell('KRCA_metabolomics_data.xlsx','Sheet','covariates','Range','C1:J1'); %
+i_Tumour=readmatrix('KRCA_metabolomics_data.xlsx','Sheet','covariates','Range','K2:K53')==1; %
+M_data=readmatrix('KRCA_metabolomics_data.xlsx','Sheet','metabolomics_data','Range','B2:BB53');
+M_pid=readcell('KRCA_metabolomics_data.xlsx','Sheet','metabolomics_data','Range','A2:A53');
+M_labs=readcell('KRCA_metabolomics_data.xlsx','Sheet','metabolomics_labels','Range','A2:A56');
 
 %% perform metabolomics clustering - partial correlation - complete case analysis
 
@@ -297,7 +298,11 @@ set(gcf,'Position',[1372,1055,1300,1000])
 
 %% load metabolomics data (Czech cohort)
 
-load('KRCA_metabolomics_data_proc_paired.mat', 'K_pid', 'M_data', 'M_labs', 'M_pid', 'i_Tumour')
+K_pid=readcell('KRCA_metabolomics_data_paired.xlsx','Sheet','covariates','Range','A2:A11');
+i_Tumour=readmatrix('KRCA_metabolomics_data_paired.xlsx','Sheet','covariates','Range','C2:C11')==1;
+M_data=readmatrix('KRCA_metabolomics_data_paired.xlsx','Sheet','metabolomics_data','Range','B2:BD11');
+M_pid=readcell('KRCA_metabolomics_data_paired.xlsx','Sheet','metabolomics_data','Range','A2:A11');
+M_labs=readcell('KRCA_metabolomics_data_paired.xlsx','Sheet','metabolomics_labels','Range','A2:A56');
 
 %% Comparing metabolomics in T vs TPN - Czech cohort
 
