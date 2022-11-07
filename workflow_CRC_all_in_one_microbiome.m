@@ -1,17 +1,12 @@
 %% load microbiome data (UK cohort)
 
-load('CRC_microbiome_data_proc.mat', 'C', 'M_data', 'M_labs', 'i_Tumour')
-
-%% scripts to include
-
-% JMP_modularity
-% bhfdr
-% LocalMaxMin
-% imax
-% imin
-% JMP_scale
-% recursivePCA
-% XTickRotateJMP
+C=readmatrix('CRC_microbiome_data.xlsx','Sheet','covariates','Range','B2:S161');
+C_pid=readcell('CRC_microbiome_data.xlsx','Sheet','covariates','Range','A2:A161');
+Clabs=readcell('CRC_microbiome_data.xlsx','Sheet','covariates','Range','B1:S1');
+i_Tumour=readmatrix('CRC_microbiome_data.xlsx','Sheet','covariates','Range','T2:T161')==1;
+M_data=readmatrix('CRC_microbiome_data.xlsx','Sheet','microbiome_data','Range','B2:BB161');
+M_pid=readcell('CRC_microbiome_data.xlsx','Sheet','microbiome_data','Range','A2:A161');
+M_labs=readcell('CRC_microbiome_data.xlsx','Sheet','microbiome_labels','Range','A2:H54');
 
 %% settings for analysis
 alp=0.05; % alpha level
@@ -201,7 +196,13 @@ title('Signed rank test for each cluster (T vs TPN)')
 
 %% load microbiome data (Czech cohort)
 
-load('KRCA_microbiome_data_proc.mat', 'C', 'M_data', 'M_labs', 'i_Tumour')
+C=readmatrix('KRCA_microbiome_data.xlsx','Sheet','covariates','Range','B2:I89');
+C_pid=readcell('KRCA_microbiome_data.xlsx','Sheet','covariates','Range','A2:A89');
+Clabs=readcell('KRCA_microbiome_data.xlsx','Sheet','covariates','Range','B1:I1');
+i_Tumour=readmatrix('KRCA_microbiome_data.xlsx','Sheet','covariates','Range','J2:J89')==1;
+M_data=readmatrix('KRCA_microbiome_data.xlsx','Sheet','microbiome_data','Range','B2:BB89');
+M_pid=readcell('KRCA_microbiome_data.xlsx','Sheet','microbiome_data','Range','A2:A89');
+M_labs=readcell('KRCA_microbiome_data.xlsx','Sheet','microbiome_labels','Range','A2:H54');
 
 %% perform microbiome clustering - partial correlation - complete case analysis
 
@@ -299,7 +300,11 @@ set(gcf,'Position',[1372,1055,1300,1000])
 
 %% load microbiome data (Czech cohort)
 
-load('KRCA_microbiome_data_proc_paired.mat', 'K_pid', 'M_data', 'M_labs', 'M_pid', 'i_Tumour')
+K_pid=readcell('KRCA_microbiome_data_paired.xlsx','Sheet','covariates','Range','A2:A29');
+i_Tumour=readmatrix('KRCA_microbiome_data_paired.xlsx','Sheet','covariates','Range','C2:C29')==1;
+M_data=readmatrix('KRCA_microbiome_data_paired.xlsx','Sheet','microbiome_data','Range','B2:BB29');
+M_pid=readcell('KRCA_microbiome_data_paired.xlsx','Sheet','microbiome_data','Range','A2:A29');
+M_labs=readcell('KRCA_microbiome_data_paired.xlsx','Sheet','microbiome_labels','Range','A2:H54');
 
 %% Comparing microbiome in T vs TPN - Czech cohort
 
