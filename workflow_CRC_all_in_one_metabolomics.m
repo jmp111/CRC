@@ -1,12 +1,16 @@
+%% load additional scripts
+
+addpath(genpath('additionalScripts'))
+
 %% load metabolomics data (UK cohort)
 
-C=readmatrix('CRC_metabolomics_data_anon.xlsx','Sheet','covariates','Range','B2:S161');
-C_pid=readcell('CRC_metabolomics_data_anon.xlsx','Sheet','covariates','Range','A2:A161');
-Clabs=readcell('CRC_metabolomics_data_anon.xlsx','Sheet','covariates','Range','B1:S1');
-i_Tumour=readmatrix('CRC_metabolomics_data_anon.xlsx','Sheet','covariates','Range','T2:T161')==1;
-M_data=readmatrix('CRC_metabolomics_data_anon.xlsx','Sheet','metabolomics_data','Range','B2:BD161');
-M_pid=readcell('CRC_metabolomics_data_anon.xlsx','Sheet','metabolomics_data','Range','A2:A161');
-M_labs=readcell('CRC_metabolomics_data_anon.xlsx','Sheet','metabolomics_labels','Range','A2:A56');
+C=readmatrix('data/CRC_metabolomics_data_anon.xlsx','Sheet','covariates','Range','B2:S161');
+C_pid=readcell('data/CRC_metabolomics_data_anon.xlsx','Sheet','covariates','Range','A2:A161');
+Clabs=readcell('data/CRC_metabolomics_data_anon.xlsx','Sheet','covariates','Range','B1:S1');
+i_Tumour=readmatrix('data/CRC_metabolomics_data_anon.xlsx','Sheet','covariates','Range','T2:T161')==1;
+M_data=readmatrix('data/CRC_metabolomics_data_anon.xlsx','Sheet','metabolomics_data','Range','B2:BD161');
+M_pid=readcell('data/CRC_metabolomics_data_anon.xlsx','Sheet','metabolomics_data','Range','A2:A161');
+M_labs=readcell('data/CRC_metabolomics_data_anon.xlsx','Sheet','metabolomics_labels','Range','A2:A56');
 
 %% settings for analysis
 alp=0.05; % alpha level
@@ -194,13 +198,13 @@ title('Signed rank test for each cluster (T vs TPN)')
 
 %% load metabolomics data (Czech cohort)
 
-C=readmatrix('KRCA_metabolomics_data_anon.xlsx','Sheet','covariates','Range','B2:I53'); %
-C_pid=readcell('KRCA_metabolomics_data_anon.xlsx','Sheet','covariates','Range','A2:A53');
-Clabs=readcell('KRCA_metabolomics_data_anon.xlsx','Sheet','covariates','Range','B1:I1'); %
-i_Tumour=readmatrix('KRCA_metabolomics_data_anon.xlsx','Sheet','covariates','Range','J2:J53')==1; %
-M_data=readmatrix('KRCA_metabolomics_data_anon.xlsx','Sheet','metabolomics_data','Range','B2:BD53');
-M_pid=readcell('KRCA_metabolomics_data_anon.xlsx','Sheet','metabolomics_data','Range','A2:A53');
-M_labs=readcell('KRCA_metabolomics_data_anon.xlsx','Sheet','metabolomics_labels','Range','A2:A56');
+C=readmatrix('data/KRCA_metabolomics_data_anon.xlsx','Sheet','covariates','Range','B2:I53'); %
+C_pid=readcell('data/KRCA_metabolomics_data_anon.xlsx','Sheet','covariates','Range','A2:A53');
+Clabs=readcell('data/KRCA_metabolomics_data_anon.xlsx','Sheet','covariates','Range','B1:I1'); %
+i_Tumour=readmatrix('data/KRCA_metabolomics_data_anon.xlsx','Sheet','covariates','Range','J2:J53')==1; %
+M_data=readmatrix('data/KRCA_metabolomics_data_anon.xlsx','Sheet','metabolomics_data','Range','B2:BD53');
+M_pid=readcell('data/KRCA_metabolomics_data_anon.xlsx','Sheet','metabolomics_data','Range','A2:A53');
+M_labs=readcell('data/KRCA_metabolomics_data_anon.xlsx','Sheet','metabolomics_labels','Range','A2:A56');
 
 %% perform metabolomics clustering - partial correlation - complete case analysis
 
@@ -298,11 +302,11 @@ set(gcf,'Position',[1372,1055,1300,1000])
 
 %% load metabolomics data (Czech cohort)
 
-K_pid=readcell('KRCA_metabolomics_data_paired_anon.xlsx','Sheet','covariates','Range','A2:A11');
-i_Tumour=readmatrix('KRCA_metabolomics_data_paired_anon.xlsx','Sheet','covariates','Range','B2:B11')==1;
-M_data=readmatrix('KRCA_metabolomics_data_paired_anon.xlsx','Sheet','metabolomics_data','Range','B2:BD11');
-M_pid=readcell('KRCA_metabolomics_data_paired_anon.xlsx','Sheet','metabolomics_data','Range','A2:A11');
-M_labs=readcell('KRCA_metabolomics_data_paired_anon.xlsx','Sheet','metabolomics_labels','Range','A2:A56');
+K_pid=readcell('data/KRCA_metabolomics_data_paired_anon.xlsx','Sheet','covariates','Range','A2:A11');
+i_Tumour=readmatrix('data/KRCA_metabolomics_data_paired_anon.xlsx','Sheet','covariates','Range','B2:B11')==1;
+M_data=readmatrix('data/KRCA_metabolomics_data_paired_anon.xlsx','Sheet','metabolomics_data','Range','B2:BD11');
+M_pid=readcell('data/KRCA_metabolomics_data_paired_anon.xlsx','Sheet','metabolomics_data','Range','A2:A11');
+M_labs=readcell('data/KRCA_metabolomics_data_paired_anon.xlsx','Sheet','metabolomics_labels','Range','A2:A56');
 
 %% Comparing metabolomics in T vs TPN - Czech cohort
 
